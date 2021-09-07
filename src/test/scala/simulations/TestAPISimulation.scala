@@ -18,6 +18,6 @@ class TestAPISimulation extends Simulation {
         .check(status is 200))
 
   //setup
-    setUp(scn.inject(atOnceUsers(1000))).protocols(httpConf)
+    setUp(scn.inject(atOnceUsers(100))).protocols(httpConf)
 
 }
