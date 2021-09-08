@@ -16,5 +16,19 @@ class AddUserSimulation extends Simulation {
       .header("content-type", "application/json")
       .check(status is 201))
 
-  setUp(scn.inject(atOnceUsers(10))).protocols(httpConf)
+    .pause(3)
+
+    .exec(http("get user request")
+      .get("/api/users/2")
+      .check(status is 200)
+      )
+
+    .pause(2)
+
+    .exec(http("get all users request")
+      .get("/api/users?page=2")
+      .check(status is 200)
+    )
+
+  setUp(scn.inject(atOnceUsers(100))).protocols(httpConf)
 }
