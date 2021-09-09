@@ -16,7 +16,7 @@ class Correlation extends Simulation {
       .get("/public/v1/users")
       .check(jsonPath("$.data[0].id").saveAs("userId")))
 
-  //second call- get a specific user based on id
+   //second call- get a specific user based on id
     .exec(http("GET specific user")
       .get("/public/v1/users/${userId}")
       .check(jsonPath("$.data.id").is("1844"))
